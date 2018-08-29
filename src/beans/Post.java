@@ -2,13 +2,33 @@ package beans;
 
 import java.util.Date;
 
-public class Publication {
+public class Post {
+	private int id;
 	private String auteur;
 	private Date date;
 	private String contenu;
-	private Long Id;
 	private Categorie categorie;
 	
+	public Post() {}
+	public Post(int id, String auteur, String contenu) {
+		this.id = id;
+		this.auteur = auteur;
+		this.contenu = contenu;
+		this.date = new Date();
+		this.categorie = new Categorie();
+	}
+	public Post(int id, String auteur, String contenu, Date date, Categorie categorie) {
+		this(id, auteur, contenu);
+		this.date= date;
+		this.categorie = categorie;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getAuteur() {
 		return auteur;
 	}
@@ -26,12 +46,6 @@ public class Publication {
 	}
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
-	}
-	public Long getId() {
-		return Id;
-	}
-	public void setId(Long id) {
-		Id = id;
 	}
 	public Categorie getCategorie() {
 		return categorie;
