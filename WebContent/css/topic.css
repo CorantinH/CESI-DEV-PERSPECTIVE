@@ -15,20 +15,11 @@ section {
 	margin: 0 auto;
 	
 	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	flex-direction: column;
 }
 
 a {
-	width: 6em;
-	height: 3em;
-	margin: 5px;
-	font-size: 2em;
-	
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 	margin: 5px;
 	padding: 5px;
 	
@@ -42,4 +33,22 @@ a {
 a:hover {
 	box-shadow: 0 0;
 	background-color: rgba(123,123,123,.1);
+}
+
+.info {
+	width: 70%;
+	padding: 0 1em;
+}
+.info > h2 {
+	font-size: larger;
+	margin-top: 0.5em;
+	margin-bottom: 0.4em;
+}
+.info > p {
+	margin-bottom: 0.5em;
+	color: gray;
+}
+aside.nbMessage {
+	font-weight: bold;
+	align-self: center;
 }

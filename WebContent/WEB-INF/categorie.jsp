@@ -6,16 +6,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> Liste des forums </title>
+		<title> Liste des catégories </title>
 		
 		<link rel="stylesheet" href='<c:url value="/css/categorie.css" />' />
 	</head>
 	<body>
-		<section class="liste">
+		<section>
 			<c:forEach items="${ categories }" var="cat">
-				<article class="forum">
-					<h2> <c:out value="${ cat.libelle }" /> </h2>
-				</article>
+				<a href="<c:url value="/topics" />"> <c:out value="${ cat.libelle }" /> </a>
 			</c:forEach>
 		</section>
 	</body>
