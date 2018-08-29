@@ -5,7 +5,6 @@ import beans.Categorie;
 public class CategorieControlleur {
 	
 	private ConnexionAdaptateur bddConnect;
-	private Categorie categorie;
 	
 	public CategorieControlleur () {
 		this.bddConnect = new ConnexionAdaptateur();
@@ -13,11 +12,11 @@ public class CategorieControlleur {
 	}
 	
 	public void getAllCategorieFromBdd() {
-		
+		this.bddConnect.getCategorieBdd(-1);
 	}
 	
 	public void getOneCategorieFromBdd(int idCategorie) {
-		
+		this.bddConnect.getCategorieBdd(idCategorie);
 	}
 	
 

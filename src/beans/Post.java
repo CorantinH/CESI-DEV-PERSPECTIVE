@@ -55,7 +55,7 @@ public class Post {
 	}
 	@Override
 	public String toString() {
-		return "Publication [auteur=" + auteur + ", date=" + date + ", contenu=" + contenu + ", Id=" + Id
+		return "Publication [auteur=" + auteur + ", date=" + date + ", contenu=" + contenu + ", Id=" + id
 				+ ", categorie=" + categorie + "]";
 	}
 }

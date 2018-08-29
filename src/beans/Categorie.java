@@ -1,19 +1,19 @@
 package beans;
 
 public class Categorie {
-	private Long id;
+	private int id;
 	private String libelle;
 	
 	public Categorie() {}
-	public Categorie(Long id, String libelle) {
+	public Categorie(int id, String libelle) {
 		this.id = id;
 		this.libelle = libelle;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getLibelle() {
