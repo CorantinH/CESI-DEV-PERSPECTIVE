@@ -1,0 +1,30 @@
+@charset "UTF-8";
+html, body {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 40%;
+	margin: 0 auto;
+}
+
+.liste {
+	display: flex;
+}
+
+.forum {
+	width: calc(100% / 3);
+	background-color: #ececec;
+	padding: 0 8px;
+	color: rgb(86, 86, 86);
+	margin: 5px;
+	text-align: center;
+	cursor: pointer;
+}
+.forum:hover {
+	background-color: #bebebe
+}
