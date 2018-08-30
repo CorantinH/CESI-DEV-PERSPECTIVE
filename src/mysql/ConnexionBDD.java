@@ -57,38 +57,4 @@ public class ConnexionBDD {
 		}
 		return conn;
 	}
-	
-	public static void main(String[] args) throws SQLException, FileNotFoundException, IOException {
-		Connection conn = null;
-		Statement st = null;
-		Properties prop = new Properties();
-		InputStream input = null;
-
-		input = new FileInputStream("config.properties");
-		prop.load(input);
-
-		String url = prop.getProperty("url");
-		String user = prop.getProperty("user");
-		String passwd = prop.getProperty("passwd");
-
-		try {
-			Class.forName(prop.getProperty("driver"));
-		} catch (ClassNotFoundException e) {
-			System.out.println("Impossible de charger le Driver mySQL");
-			e.printStackTrace();
-			System.exit(10);
-		}
-
-		try {
-			conn = DriverManager.getConnection(url, user, passwd);
-			st = conn.createStatement();
-		} catch (SQLException e) {
-			System.out.println("Impossible de se connecter la BDD");
-			e.printStackTrace();
-			System.exit(10);
-		}
-
-		System.out.println("Connexion r�ussie !");
-
-	}
 }
