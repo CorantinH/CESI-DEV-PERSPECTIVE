@@ -13,7 +13,7 @@ public class affichageTopic extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setAttribute("name", "<b>Mon CSS a cassé</b>" );
-		req.setAttribute("status", "En cours " );
+		req.setAttribute("status", "Fermé" );
 		req.setAttribute("author", "Jean Le Modo" );
 		req.setAttribute("corps", "Plus de détails stp" );
 		req.setAttribute("date", "21/01/2018" );

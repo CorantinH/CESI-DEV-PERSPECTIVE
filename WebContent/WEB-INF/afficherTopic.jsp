@@ -23,7 +23,9 @@
 					</div>
 			</c:forEach>
 		</section>
-		<form method="get" action="<c:url value="/creationReponse"/>">
+       <c:choose>
+    <c:when test="${status == 'En cours'}">
+        <form method="get" action="<c:url value="/creationReponse"/>">
                     <label for="Login">Pseudo <span class="requis">*</span></label>
                     <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" />
                     <br />                 
@@ -38,5 +40,13 @@
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
             </form>
+        <br />
+    </c:when>    
+    <c:otherwise>
+        Discussion terminée! 
+        <br />
+    </c:otherwise>
+</c:choose>
+		
 	</body>
 </html>
