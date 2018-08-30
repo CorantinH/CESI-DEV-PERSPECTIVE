@@ -3,12 +3,28 @@
   <display-name>forum_discussion</display-name>
   
   <servlet>
-  	<servlet-name>AffichageCategories</servlet-name>
-  	<servlet-class>servlets.ServletCategorie</servlet-class>
+  	<servlet-name>AffichageCategorie</servlet-name>
+  	<servlet-class>servlets.AfficherCategorie</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>AffichageTopic</servlet-name>
+  	<servlet-class>servlets.AfficherTopic</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>AffichagePost</servlet-name>
+  	<servlet-class>servlets.AfficherPost</servlet-class>
+  </servlet>
+  
+  <!-- URL mapping -->
   <servlet-mapping>
-  	<servlet-name>AffichageCategories</servlet-name>
-  	<url-pattern>/forum</url-pattern>
+  	<servlet-name>AffichageCategorie</servlet-name>
+  	<url-pattern>/cats</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>AffichageTopic</servlet-name>
+  	<url-pattern>/topics</url-pattern>
   </servlet-mapping>
 </web-app>
