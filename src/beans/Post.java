@@ -53,4 +53,9 @@ public class Post {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	@Override
+	public String toString() {
+		return "Publication [auteur=" + auteur + ", date=" + date + ", contenu=" + contenu + ", Id=" + id
+				+ ", categorie=" + categorie + "]";
+	}
 }
