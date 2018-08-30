@@ -3,3 +3,4 @@
 .project
 build/
 WebContent/META-INF/
+src/mysql/config.properties
