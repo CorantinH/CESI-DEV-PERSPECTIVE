@@ -29,11 +29,6 @@ public class CreationTopic extends HttpServlet {
 		} catch (SQLException ex) {
 		}
 		
-		// TODO: supprimer les fausses catégories
-		if (categories.isEmpty()) {
-			categories.addAll(fakeCategories());
-		}
-		
 		// injection et redirection
 		req.setAttribute("categories", categories);
 		req.setAttribute("selectedCategorie", Integer.parseInt(req.getParameter("idCat")));
@@ -66,9 +61,6 @@ public class CreationTopic extends HttpServlet {
 			List<Categorie> categories = sql.getCategorieBdd(idCat);
 			if (!categories.isEmpty()) {
 				categorie = categories.get(0);
-			} else {
-				// TODO: supprimer fausse catégorie
-				categorie = fakeCategories().get(idCat);
 			}
 			topic.setCategorie(categorie);
 			post.setTopic(topic);
@@ -76,50 +68,11 @@ public class CreationTopic extends HttpServlet {
 			message = (sql.insertTopic(topic) && sql.insertPost(post))? "" : "Erreur lors de la création du topic";
 		} catch (SQLException ex) {
 		}
-		
-		// TODO: supprimer les faux topics
-		if (topics.isEmpty()) {
-			topics.addAll(fakeTopics());
-			topics.add(topic);
-		}
 
 		// injection et redirection
 		req.setAttribute("message", message);
 		req.setAttribute("categorie", categorie);
 		req.setAttribute("topics", topics);
 		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
-	}
-	
-	/**
-	 * Créer des fausses catégories
-	 * @return liste de catégorie
-	 */
-	private static List<Topic> fakeTopics() {
-		List<Topic> topics = new ArrayList<>();
-		
-		topics.add(new Topic(0, "Raidez", "Besoin d'aide sur MySQL", new Date(), 3));
-		topics.add(new Topic(1, "Mci7", "Pu*** de WEB-INF", new Date(), 8));
-		topics.add(new Topic(2, "Mci7-sister", "compren pa JSTL", new Date(), 2));
-		topics.add(new Topic(3, "Raidez", "adapteur ou controller ?", new Date(), 17));
-		
-		return topics;
-	}
-	
-	/**
-	 * Créer des fausses catégories
-	 * @return liste de catégorie
-	 */
-	private static List<Categorie> fakeCategories() {
-		List<Categorie> categories = new ArrayList<>();
-		
-		categories.add(new Categorie(0, "Java"));
-		categories.add(new Categorie(1, "C"));
-		categories.add(new Categorie(2, "C++"));
-		categories.add(new Categorie(3, "C#"));
-		categories.add(new Categorie(4, "Python3"));
-		categories.add(new Categorie(5, "HTML5/CSS3"));
-		categories.add(new Categorie(6, "Javascript"));
-		
-		return categories;
 	}
 }
