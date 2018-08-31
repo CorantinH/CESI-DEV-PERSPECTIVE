@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class ConnexionAdaptateur {
 		}
 	}
 	
-	public List<Topic> getTopicBdd(int ID) throws SQLException {
+	public List<Topic> getTopicBdd(int ID) throws SQLException, SQLTimeoutException {
 		List<Topic> result = new ArrayList<Topic>();
 		String req = "SELECt * FROM topics ";
 		
@@ -48,7 +49,7 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
-	public List<Post> getPostBdd(int ID) throws SQLException {
+	public List<Post> getPostBdd(int ID) throws SQLException, SQLTimeoutException {
 		List<Post> result = new ArrayList<Post>();
 		String req = "SELECT * FROM posts ";
 		
@@ -65,7 +66,7 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
-	public List<Categorie> getCategorieBdd(int ID) throws SQLException {
+	public List<Categorie> getCategorieBdd(int ID) throws SQLException, SQLTimeoutException {
 		List<Categorie> result = new ArrayList<Categorie>();
 		String req = "SELECT * FROM categories ";
 		
@@ -82,7 +83,7 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
-	public List<Topic> getTopicsWithCategorie(int ID) throws SQLException {
+	public List<Topic> getTopicsWithCategorie(int ID) throws SQLException, SQLTimeoutException {
 		List<Topic> result = new ArrayList<Topic>();
 		String req = "SELECT * FROM topics WHERE topic_cat = ?";
 		
@@ -97,7 +98,7 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
-	public List<Post> getPostsWithTopic(int ID) throws SQLException {
+	public List<Post> getPostsWithTopic(int ID) throws SQLException, SQLTimeoutException {
 		List<Post> result = new ArrayList<Post>();
 		String req = "SELECT * FROM posts WHERE post_topic = ?";
 		
@@ -112,7 +113,7 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
-	public boolean insertTopic(Topic t) throws SQLException {
+	public boolean insertTopic(Topic t) throws SQLException, SQLTimeoutException {
 		String req = "INSERT INTO topics (post_subject, post_date, post_cat, post_by, post_status) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, t.getSujet());
@@ -126,7 +127,7 @@ public class ConnexionAdaptateur {
 		return true;
 	}
 	
-	public boolean insertPost(Post p) throws SQLException {
+	public boolean insertPost(Post p) throws SQLException, SQLTimeoutException {
 		String req = "INSERT INTO posts (post_content, post_date, post_topic, post_by) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, p.getContenu());
@@ -139,7 +140,7 @@ public class ConnexionAdaptateur {
 		return true;
 	}
 	
-	public boolean insertCategorie(Categorie c) throws SQLException {
+	public boolean insertCategorie(Categorie c) throws SQLException, SQLTimeoutException {
 		String req = "INSERT INTO categories (cat_name) VALUES (?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, c.getLibelle());
@@ -149,7 +150,7 @@ public class ConnexionAdaptateur {
 		return true;
 	}
 	
-	public boolean editTopicSolved(Topic t) throws SQLException {
+	public boolean editTopicSolved(Topic t) throws SQLException, SQLTimeoutException {
 		String req = "UPDATE topics SET topic_status = ? WHERE topic_id = ?";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, "Resolu");
