@@ -38,7 +38,7 @@ public class ConnexionAdaptateur {
 		ResultSet rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
-			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), new Date(), new Categorie(rs.getInt("topic_cat"), "")));
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
 		}
 		
 		return result;
@@ -46,12 +46,17 @@ public class ConnexionAdaptateur {
 	
 	public List<Post> getPostBdd(int ID) throws SQLException {
 		List<Post> result = new ArrayList();
-		String req = "SELECT * FROM posts ";
+		String req = "SELECT * FROM posts JOIN users ON post_by = user_id ";
 		
 		if (ID != -1) req += "WHERE post_id = " + ID;
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		if (ID != -1) pstmt.setInt(0, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			result.add(new Post(rs.getInt("post_id"), rs.getString("user_name"), rs.getString("post_content"), rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
+		}
 		
 		return result;
 	}
@@ -64,6 +69,11 @@ public class ConnexionAdaptateur {
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		if (ID != -1) pstmt.setInt(0, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			result.add(new Categorie(rs.getInt("cat_id"), rs.getString("cat_name")));
+		}
 		
 		return result;
 	}
