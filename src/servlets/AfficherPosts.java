@@ -39,4 +39,9 @@ public class AfficherPosts extends HttpServlet {
 		req.setAttribute("topic", topic);
 		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doGet(req, resp);
+	}
 }

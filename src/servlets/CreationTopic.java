@@ -40,7 +40,7 @@ public class CreationTopic extends HttpServlet {
 		ConnexionAdaptateur sql = new ConnexionAdaptateur();
 		List<Topic> topics = new ArrayList<>();
 		Categorie categorie = null;
-		String message = null;
+		String message = "";
 		
 		Topic topic = new Topic();
 		topic.setAuteur(req.getParameter("auteur"));
@@ -64,7 +64,10 @@ public class CreationTopic extends HttpServlet {
 			topic.setCategorie(categorie);
 			post.setTopic(topic);
 			
-			message = (sql.insertTopic(topic) && sql.insertPost(post))? "" : "Erreur lors de la création du topic";
+			
+			if (sql.insertTopic(topic)) {
+				message = (sql.insertPost(post))? "" : "Erreur lors de la création du topic";
+			}
 		} catch (SQLException ex) {
 		}
 
