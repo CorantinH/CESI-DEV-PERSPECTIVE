@@ -103,12 +103,6 @@ INSERT INTO `topics` (`topic_id`, `topic_subject`, `topic_date`, `topic_cat`, `t
 --
 
 --
--- Contraintes pour la table `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_post_topic_id` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`);
-
---
 -- Contraintes pour la table `topics`
 --
 ALTER TABLE `topics`
