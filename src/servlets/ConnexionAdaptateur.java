@@ -36,7 +36,6 @@ public class ConnexionAdaptateur {
 		if (ID != -1) pstmt.setInt(0, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
 		while (rs.next()) {
 			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
 		}
@@ -84,6 +83,12 @@ public class ConnexionAdaptateur {
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setInt(0, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+		}
+		
 		return result;
 	}
 	
@@ -95,6 +100,10 @@ public class ConnexionAdaptateur {
 		pstmt.setInt(0, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			result.add(new Post(rs.getInt("post_id"), rs.getString("user_name"), rs.getString("post_content"), rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
+		}
+		
 		return result;
 	}
 	
