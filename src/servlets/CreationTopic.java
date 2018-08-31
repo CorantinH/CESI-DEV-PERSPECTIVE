@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Categorie;
+import beans.Post;
+import beans.Topic;
 
 public class CreationTopic extends HttpServlet {
+	private static String JSP_PATH = "WEB-INF/topics.jsp";
+	private static String JSP_PATH_AJOUT = "WEB-INF/ajoutTopic.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,12 +37,72 @@ public class CreationTopic extends HttpServlet {
 		// injection et redirection
 		req.setAttribute("categories", categories);
 		req.setAttribute("selectedCategorie", Integer.parseInt(req.getParameter("idCat")));
-		req.getRequestDispatcher("WEB-INF/ajoutTopic.jsp").forward(req, resp);
+		req.getRequestDispatcher(JSP_PATH_AJOUT).forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
+		ConnexionAdaptateur sql = new ConnexionAdaptateur();
+		List<Topic> topics = new ArrayList<>();
+		Categorie categorie = null;
+		String message = null;
+		
+		Topic topic = new Topic();
+		topic.setAuteur(req.getParameter("auteur"));
+		topic.setSujet(req.getParameter("sujet"));
+		topic.setNbMessages(1);
+		topic.setDate(new Date());
+		topic.setStatut(false);
+		
+		Post post = new Post();
+		post.setAuteur(topic.getAuteur());
+		post.setContenu(req.getParameter("contenu"));
+		post.setDate(topic.getDate());
+		
+		try {
+			int idCat = Integer.parseInt(req.getParameter("categorie"));
+			topics.addAll(sql.getTopicsWithCategorie(idCat));
+			
+			List<Categorie> categories = sql.getCategorieBdd(idCat);
+			if (!categories.isEmpty()) {
+				categorie = categories.get(0);
+			} else {
+				// TODO: supprimer fausse catégorie
+				categorie = fakeCategories().get(idCat);
+			}
+			topic.setCategorie(categorie);
+			post.setTopic(topic);
+			
+			message = (sql.insertTopic(topic) && sql.insertPost(post))? "" : "Erreur lors de la création du topic";
+		} catch (SQLException ex) {
+		}
+		
+		// TODO: supprimer les faux topics
+		if (topics.isEmpty()) {
+			topics.addAll(fakeTopics());
+			topics.add(topic);
+		}
+
+		// injection et redirection
+		req.setAttribute("message", message);
+		req.setAttribute("categorie", categorie);
+		req.setAttribute("topics", topics);
+		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
+	}
+	
+	/**
+	 * Créer des fausses catégories
+	 * @return liste de catégorie
+	 */
+	private static List<Topic> fakeTopics() {
+		List<Topic> topics = new ArrayList<>();
+		
+		topics.add(new Topic(0, "Raidez", "Besoin d'aide sur MySQL", new Date(), 3));
+		topics.add(new Topic(1, "Mci7", "Pu*** de WEB-INF", new Date(), 8));
+		topics.add(new Topic(2, "Mci7-sister", "compren pa JSTL", new Date(), 2));
+		topics.add(new Topic(3, "Raidez", "adapteur ou controller ?", new Date(), 17));
+		
+		return topics;
 	}
 	
 	/**

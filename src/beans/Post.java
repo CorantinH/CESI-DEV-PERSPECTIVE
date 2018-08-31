@@ -7,7 +7,7 @@ public class Post {
 	private String auteur;
 	private Date date;
 	private String contenu;
-	private Categorie categorie;
+	private Topic topic;
 	
 	public Post() {}
 	public Post(int id, String auteur, String contenu) {
@@ -15,12 +15,12 @@ public class Post {
 		this.auteur = auteur;
 		this.contenu = contenu;
 		this.date = new Date();
-		this.categorie = new Categorie();
+		this.topic = new Topic();
 	}
-	public Post(int id, String auteur, String contenu, Date date, Categorie categorie) {
+	public Post(int id, String auteur, String contenu, Date date, Topic topic) {
 		this(id, auteur, contenu);
 		this.date= date;
-		this.categorie = categorie;
+		this.topic = topic;
 	}
 
 	public int getId() {
@@ -47,15 +47,15 @@ public class Post {
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
-	public Categorie getCategorie() {
-		return categorie;
+	public Topic getTopic() {
+		return topic;
 	}
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 	@Override
 	public String toString() {
 		return "Publication [auteur=" + auteur + ", date=" + date + ", contenu=" + contenu + ", Id=" + id
-				+ ", categorie=" + categorie + "]";
+				+ ", categorie=" + topic.toString() + "]";
 	}
 }
