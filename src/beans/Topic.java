@@ -8,7 +8,7 @@ public class Topic {
 	private String sujet;
 	private Date date;
 	private Categorie categorie;
-	private boolean statut;
+	private String statut;
 	private int nbMessages;
 	
 	public Topic() {}
@@ -18,7 +18,7 @@ public class Topic {
 		this.sujet = sujet;
 		this.date = new Date();
 		this.categorie = new Categorie();
-		this.statut = false;
+		this.statut = "En cours";
 	}
 	public Topic(int id, String auteur, String sujet, Date date, Categorie categorie) {
 		this(id, auteur, sujet);
@@ -61,10 +61,10 @@ public class Topic {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-	public boolean isStatut() {
+	public String getStatut() {
 		return statut;
 	}
-	public void setStatut(boolean statut) {
+	public void setStatut(String statut) {
 		this.statut = statut;
 	}
 	public int getNbMessages() {

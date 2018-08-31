@@ -6,26 +6,21 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> <c:out value="${ name }" ></c:out> </title>
+		<title> <c:out value="${ topic.sujet }" ></c:out> </title>
 		<link type="text/css" rel="stylesheet" href="<c:url value="/css/discussion.css"/>" />
 	</head>
 	<body>
-	<h2> <c:out value="${ name }"> </c:out> [<c:out value="${ status }"></c:out>] </h2>
-	<div class="main"> 
-		<section>
-		Je comprend pas j'ai tout bien fais <br>
-		<p> par <b> Corantin </b>  <i> le 30/01/2015 </i> </p>
-		</div>
-			<c:forEach items="${ corps }" var="top">
+	<h2> <c:out value="${ topic.sujet }"> </c:out> [<c:out value="${ topic.statut }"></c:out>] </h2>
+			<c:forEach items="${ posts }" var="post">
 					<div class="info">
-						 <c:out value="${ corps }" /> 
-						<p> par <b><c:out value="${ author }" /></b> le <i><c:out value="${ date }" /></i> </p>
+						 <c:out value="${ post.contenu }" /> 
+						<p> par <b><c:out value="${ post.auteur }" /></b> le <i><c:out value="${ post.date }" /></i> </p>
 					</div>
 			</c:forEach>
 		</section>
        <c:choose>
-    <c:when test="${status == 'En cours'}">
-        <form method="get" action="<c:url value="/creationReponse"/>">
+    <c:when test="${topic.statut == 'En cours'}">
+        <form method="post" action="<c:url value="/ajoutPost?idTopic=${ topic.id }"/>">
                     <label for="Login">Pseudo <span class="requis">*</span></label>
                     <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" required/>
                     <br />                 
@@ -35,6 +30,7 @@
                     <br/>
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
+                <a href="<c:url value="/closeTopic?idTopic=${ topic.id }"/>"> Fermer la discussion</a>
             </form>
         <br />
     </c:when>    
@@ -43,7 +39,7 @@
         <br />
     </c:otherwise>
 	</c:choose>
-		<a href="bite">Fermer la discussion</a>
+
 		<a href="javascript:history.back()">Page précédente</a>
 		<a href="index"> Menu </a>
 	</body>

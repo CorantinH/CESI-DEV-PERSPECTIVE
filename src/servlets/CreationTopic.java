@@ -47,7 +47,6 @@ public class CreationTopic extends HttpServlet {
 		topic.setSujet(req.getParameter("sujet"));
 		topic.setNbMessages(1);
 		topic.setDate(new Date());
-		topic.setStatut(false);
 		
 		Post post = new Post();
 		post.setAuteur(topic.getAuteur());
