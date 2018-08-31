@@ -36,6 +36,9 @@ public class ControleurCategorie extends HttpServlet {
 			List<Categorie> categories = sql.getCategorieBdd(idCat);
 			if (!categories.isEmpty()) {
 				categorie = categories.get(0);
+			} else {
+				// TODO: supprimer fausse catégorie
+				categorie = new Categorie(0, "Java");
 			}
 		} catch (SQLException ex) {
 		}
