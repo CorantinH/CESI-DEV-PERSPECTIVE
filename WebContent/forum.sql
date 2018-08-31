@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `forum`
 --
+DROP DATABASE `forum`
 CREATE DATABASE IF NOT EXISTS `forum` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `forum`;
 
@@ -35,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `cat_id` int(8) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(255) NOT NULL,
   `cat_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`cat_id`),
-  UNIQUE KEY `cat_name_unique` (`cat_name`)
+  CONSTRAINT `PK_categories` PRIMARY KEY (`cat_id`),
+  CONSTRAINT `UNI_cat_name` UNIQUE (`cat_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -61,9 +62,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `post_date` datetime NOT NULL,
   `post_topic` int(8) NOT NULL,
   `post_by` int(8) NOT NULL,
-  PRIMARY KEY (`post_id`),
-  KEY `post_topic` (`post_topic`),
-  KEY `post_by` (`post_by`)
+  CONSTRAINT `PK_posts` PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -88,9 +87,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `topic_cat` int(8) NOT NULL,
   `topic_by` int(8) NOT NULL,
   `topic_status` enum('En cours','Résolu') NOT NULL,
-  PRIMARY KEY (`topic_id`),
-  KEY `topic_cat` (`topic_cat`),
-  KEY `topic_by` (`topic_by`)
+  CONSTRAINT `PK_topics` PRIMARY KEY (`topic_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
@@ -114,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_email` varchar(255) NOT NULL,
   `user_date` datetime NOT NULL,
   `user_level` int(8) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_name_unique` (`user_name`)
+  CONSTRAINT `PK_user` PRIMARY KEY (`user_id`),
+  CONSTRAINT `UNI_user_name`UNIQUE `user_name_unique` (`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
@@ -134,16 +131,15 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_da
 -- Contraintes pour la table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`),
-  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`post_by`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `FK_post_topic_id` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`),
+  ADD CONSTRAINT `FK_post_user_id` FOREIGN KEY (`post_by`) REFERENCES `users` (`user_id`);
 
 --
 -- Contraintes pour la table `topics`
 --
 ALTER TABLE `topics`
-  ADD CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`topic_cat`) REFERENCES `categories` (`cat_id`),
-  ADD CONSTRAINT `topics_ibfk_2` FOREIGN KEY (`topic_by`) REFERENCES `users` (`user_id`);
-COMMIT;
+  ADD CONSTRAINT `FK_topic_categori_id` FOREIGN KEY (`topic_cat`) REFERENCES `categories` (`cat_id`),
+  ADD CONSTRAINT `FK_topic_user_id` FOREIGN KEY (`topic_by`) REFERENCES `users` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
