@@ -4,7 +4,17 @@
   
    <servlet>
   	<servlet-name>afficherCategories</servlet-name>
-  	<servlet-class>servlets.ControllerCategorie</servlet-class>
+  	<servlet-class>servlets.ControleurIndex</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<servlet-class>servlets.ControleurCategorie</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<servlet-class>servlets.ControleurTopic</servlet-class>
   </servlet>
   
   <!-- URL mapping -->

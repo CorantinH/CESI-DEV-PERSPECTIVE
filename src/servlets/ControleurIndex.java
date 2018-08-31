@@ -12,11 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Categorie;
 
-public class ControllerCategorie extends HttpServlet {
+/**
+ * Affiche la page des catégories
+ * @author alexis
+ */
+public class ControleurIndex extends HttpServlet {
 	private static String JSP_PATH = "/WEB-INF/categorie.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// récupération des catégories
 		ConnexionAdaptateur sql = new ConnexionAdaptateur();
 		List<Categorie> categories = new ArrayList<>();
 		try {
@@ -29,10 +34,15 @@ public class ControllerCategorie extends HttpServlet {
 			categories.addAll(fakeCategories());
 		}
 		
+		// injection et redirection
 		req.setAttribute("categories", categories);
 		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
 	}
 	
+	/**
+	 * Créer des fausses catégories
+	 * @return liste de catégorie
+	 */
 	private static List<Categorie> fakeCategories() {
 		List<Categorie> categories = new ArrayList<>();
 		

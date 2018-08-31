@@ -13,7 +13,8 @@
 	<body>
 		<section>
 			<c:forEach items="${ categories }" var="cat">
-				<a href="<c:url value="/topics" />"> <c:out value="${ cat.libelle }" /> </a>
+				<%-- affichage d'un cadre stylisé pour chaque catégorie --%>
+				<a href="<c:url value="/forum?id=${ cat.id }" />"> <c:out value="${ cat.libelle }" /> </a>
 			</c:forEach>
 		</section>
 	</body>

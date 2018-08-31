@@ -53,9 +53,9 @@ public class ConnexionAdaptateur {
 		
 		if (ID < 0) {
 			String req = "select * from categorie";
-			PreparedStatement pstmt = this.bdd.prepareStatement("UPDATE EMPLOYEES SET SALARY = ? WHERE ID = ?");
-			pstmt.setDouble(1, 153833.00);
-			pstmt.setInt(2, 110592);
+//			PreparedStatement pstmt = this.bdd.prepareStatement("UPDATE EMPLOYEES SET SALARY = ? WHERE ID = ?");
+//			pstmt.setDouble(1, 153833.00);
+//			pstmt.setInt(2, 110592);
 
 		} else {
 			String req = "select * from categorie where cat_id = " + ID;

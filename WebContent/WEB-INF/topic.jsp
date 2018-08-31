@@ -12,14 +12,14 @@
 	</head>
 	<body>
 		<section>
-			<c:forEach items="${ topics }" var="top">
-				<a href="/topic">
+			<c:forEach items="${ topics }" var="topic">
+				<a href="<c:url value="/topic?idCat=${ categorie.id }&id=${ topic.id }" />">
 					<div class="info">
-						<h2> <c:out value="${ top.sujet }" /> </h2>
-						<p> par <b><c:out value="${ top.auteur }" /></b> le <i><c:out value="${ top.date }" /></i> </p>
+						<h2> <c:out value="${ topic.sujet }" /> </h2>
+						<p> par <b><c:out value="${ topic.auteur }" /></b> le <i><c:out value="${ topic.date }" /></i> </p>
 					</div>
 					<aside class="nbMessage">
-						5 messages
+						<c:out value="${ topic.nbMessages }" /> messages
 					</aside>
 				</a>
 			</c:forEach>
