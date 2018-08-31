@@ -3,8 +3,10 @@ package servlets;
 import java.rmi.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import beans.*;
@@ -26,11 +28,17 @@ public class ConnexionAdaptateur {
 	
 	public List<Topic> getTopicBdd(int ID) throws SQLException {
 		List<Topic> result = new ArrayList();
+		String req = "SELECt * FROM topics JOIN users ON topic_by = user_id ";
 		
-		if (ID < 0) {
-			String req = "select * from topics";
-		} else {
-			String req = "select * from topics where topic_id = " + ID;
+		if (ID != -1) req += "WHERE topic_id = ?";
+		
+		PreparedStatement pstmt = this.bdd.prepareStatement(req);
+		if (ID != -1) pstmt.setInt(0, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), new Date(), new Categorie(rs.getInt("topic_cat"), "")));
 		}
 		
 		return result;
@@ -38,41 +46,45 @@ public class ConnexionAdaptateur {
 	
 	public List<Post> getPostBdd(int ID) throws SQLException {
 		List<Post> result = new ArrayList();
+		String req = "SELECT * FROM posts ";
 		
-		if (ID < 0) {
-			String req = "select * from posts";
-		} else {
-			String req = "select * from posts where post_id = " + ID;
-		}
+		if (ID != -1) req += "WHERE post_id = " + ID;
+		
+		PreparedStatement pstmt = this.bdd.prepareStatement(req);
+		if (ID != -1) pstmt.setInt(0, ID);
 		
 		return result;
 	}
 	
 	public List<Categorie> getCategorieBdd(int ID) throws SQLException {
 		List<Categorie> result = new ArrayList();
+		String req = "SELECT * FROM categories ";
 		
-		if (ID < 0) {
-			String req = "select * from categorie";
-//			PreparedStatement pstmt = this.bdd.prepareStatement("UPDATE EMPLOYEES SET SALARY = ? WHERE ID = ?");
-//			pstmt.setDouble(1, 153833.00);
-//			pstmt.setInt(2, 110592);
-
-		} else {
-			String req = "select * from categorie where cat_id = " + ID;
-		}
+		if (ID != -1) req += "WHERE cat_id = ?";
+		
+		PreparedStatement pstmt = this.bdd.prepareStatement(req);
+		if (ID != -1) pstmt.setInt(0, ID);
 		
 		return result;
 	}
 	
 	public List<Topic> getTopicsWithCategorie(int ID) throws SQLException {
 		List<Topic> result = new ArrayList();
+		String req = "SELECT * FROM topics WHERE topic_cat = ?";
 		
+		PreparedStatement pstmt = this.bdd.prepareStatement(req);
+		pstmt.setInt(0, ID);
 		return result;
 	}
 	
 	public List<Post> getPostsWithTopic(int ID) throws SQLException {
 		List<Post> result = new ArrayList();
+		String req = "SELECT * FROM posts WHERE post_topic = ?";
 		
+		PreparedStatement pstmt = this.bdd.prepareStatement(req);
+		pstmt.setInt(0, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
 		return result;
 	}
 	
