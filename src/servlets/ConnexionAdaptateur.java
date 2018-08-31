@@ -70,6 +70,12 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
+	public List<Post> getPostsWithTopic(int ID) throws SQLException {
+		List<Post> result = new ArrayList();
+		
+		return result;
+	}
+	
 	public boolean insertTopic(Topic t) throws SQLException {
 		return true;
 	}
