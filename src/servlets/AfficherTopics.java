@@ -19,8 +19,8 @@ import beans.Topic;
  * @author alexis
  *
  */
-public class ControleurCategorie extends HttpServlet {
-	private static String JSP_PATH = "/WEB-INF/topic.jsp";
+public class AfficherTopics extends HttpServlet {
+	private static String JSP_PATH = "/WEB-INF/topics.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class ControleurCategorie extends HttpServlet {
 		Categorie categorie = null;
 		
 		try {
-			int idCat = Integer.parseInt(req.getParameter("id"));
+			int idCat = Integer.parseInt(req.getParameter("idCat"));
 			topics.addAll(sql.getTopicsWithCategorie(idCat));
 			
 			List<Categorie> categories = sql.getCategorieBdd(idCat);
@@ -38,7 +38,7 @@ public class ControleurCategorie extends HttpServlet {
 				categorie = categories.get(0);
 			} else {
 				// TODO: supprimer fausse catégorie
-				categorie = new Categorie(0, "Java");
+				categorie = fakeCategories().get(idCat);
 			}
 		} catch (SQLException ex) {
 		}
@@ -82,5 +82,23 @@ public class ControleurCategorie extends HttpServlet {
 		topics.add(new Topic(3, "Raidez", "adapteur ou controller ?", new Date(), 17));
 		
 		return topics;
+	}
+	
+	/**
+	 * Créer des fausses catégories
+	 * @return liste de catégorie
+	 */
+	private static List<Categorie> fakeCategories() {
+		List<Categorie> categories = new ArrayList<>();
+		
+		categories.add(new Categorie(0, "Java"));
+		categories.add(new Categorie(1, "C"));
+		categories.add(new Categorie(2, "C++"));
+		categories.add(new Categorie(3, "C#"));
+		categories.add(new Categorie(4, "Python3"));
+		categories.add(new Categorie(5, "HTML5/CSS3"));
+		categories.add(new Categorie(6, "Javascript"));
+		
+		return categories;
 	}
 }
