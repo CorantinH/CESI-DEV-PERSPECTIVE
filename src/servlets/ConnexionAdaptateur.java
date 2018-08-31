@@ -64,6 +64,12 @@ public class ConnexionAdaptateur {
 		return result;
 	}
 	
+	public List<Topic> getTopicsWithCategorie(int ID) throws SQLException {
+		List<Topic> result = new ArrayList();
+		
+		return result;
+	}
+	
 	public boolean insertTopic(Topic t) throws SQLException {
 		return true;
 	}
