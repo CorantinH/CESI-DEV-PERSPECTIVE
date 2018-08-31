@@ -49,6 +49,11 @@ public class AfficherTopics extends HttpServlet {
 		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doGet(req, resp);
+	}
+	
 	private static void getNbMessageFromTopic(ConnexionAdaptateur sql, List<Topic> topics) {
 		for (Topic topic : topics) {
 			int nbMessages = 0;

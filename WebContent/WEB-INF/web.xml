@@ -1,65 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>forum_discussion</display-name>
-  
-   <servlet>
-  	<servlet-name>afficherCategories</servlet-name>
-  	<servlet-class>servlets.AfficherCategories</servlet-class>
-  </servlet>
-  
-   <servlet>
-  	<servlet-name>afficherTopics</servlet-name>
-  	<servlet-class>servlets.AfficherTopics</servlet-class>
-  </servlet>
-  
-   <servlet>
-  	<servlet-name>afficherPosts</servlet-name>
-  	<servlet-class>servlets.AfficherPosts</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>creationTopic</servlet-name>
-  	<servlet-class>servlets.CreationTopic</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>ajoutPost</servlet-name>
-  	<servlet-class>servlets.AjoutPost</servlet-class>
-  </servlet>
-  
-  <!-- URL mapping -->
-  <servlet-mapping>
-  	<servlet-name>afficherCategories</servlet-name>
-  	<url-pattern>/index</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>afficherTopics</servlet-name>
-  	<url-pattern>/forum</url-pattern>
-  	<!-- ?idCat=X -->
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>afficherPosts</servlet-name>
-  	<url-pattern>/topic</url-pattern>
-  	<!-- ?idTopic=X -->
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>creationTopic</servlet-name>
-  	<url-pattern>/newTopic</url-pattern>
-  	<!-- ?idCat=X -->
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>creationTopic</servlet-name>
-  	<url-pattern>/closeTopic</url-pattern>
-  	<!-- ?idTopic=X -->
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>ajoutPost</servlet-name>
-  	<url-pattern>/ajoutPost</url-pattern>
-  	<!-- ?idTopic=X -->
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>forum_discussion</display-name>
+
+	<servlet>
+		<servlet-name>afficherCategories</servlet-name>
+		<servlet-class>servlets.AfficherCategories</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>afficherTopics</servlet-name>
+		<servlet-class>servlets.AfficherTopics</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>fermerTopic</servlet-name>
+		<servlet-class>servlets.FermerTopic</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>afficherPosts</servlet-name>
+		<servlet-class>servlets.AfficherPosts</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>creationTopic</servlet-name>
+		<servlet-class>servlets.CreationTopic</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ajoutPost</servlet-name>
+		<servlet-class>servlets.AjoutPost</servlet-class>
+	</servlet>
+
+	<!-- URL mapping -->
+	<servlet-mapping>
+		<servlet-name>afficherCategories</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>afficherTopics</servlet-name>
+		<url-pattern>/forum</url-pattern>
+		<!-- ?idCat=X -->
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>afficherPosts</servlet-name>
+		<url-pattern>/topic</url-pattern>
+		<!-- ?idTopic=X -->
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>creationTopic</servlet-name>
+		<url-pattern>/newTopic</url-pattern>
+		<!-- ?idCat=X -->
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>fermerTopic</servlet-name>
+		<url-pattern>/closeTopic</url-pattern>
+		<!-- ?idTopic=X -->
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ajoutPost</servlet-name>
+		<url-pattern>/ajoutPost</url-pattern>
+		<!-- ?idTopic=X -->
+	</servlet-mapping>
 </web-app>

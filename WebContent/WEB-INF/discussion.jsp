@@ -22,11 +22,11 @@
     <c:when test="${topic.statut == 'En cours'}">
         <form method="post" action="<c:url value="/ajoutPost?idTopic=${ topic.id }"/>">
                     <label for="Login">Pseudo <span class="requis">*</span></label>
-                    <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" required/>
+                    <input type="text" id="Login" name="auteur" value="" size="10" maxlength="50" required/>
                     <br />                 
                      <label for="Message">Message<span class="requis">*</span></label>
                     <br />  
-                    <textarea rows="4" cols="50" name="comment" form="usrform" required> Entrez votre réponse</textarea>
+                    <textarea rows="4" cols="50" name="contenu" required placeholder="Entrez votre réponse"></textarea>
                     <br/>
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />

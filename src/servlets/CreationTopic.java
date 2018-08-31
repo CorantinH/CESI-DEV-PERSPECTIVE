@@ -16,7 +16,7 @@ import beans.Post;
 import beans.Topic;
 
 public class CreationTopic extends HttpServlet {
-	private static String JSP_PATH = "WEB-INF/topics.jsp";
+	private static String JSP_PATH = "/forum?idCat=";
 	private static String JSP_PATH_AJOUT = "WEB-INF/ajoutTopic.jsp";
 
 	@Override
@@ -41,6 +41,7 @@ public class CreationTopic extends HttpServlet {
 		List<Topic> topics = new ArrayList<>();
 		Categorie categorie = null;
 		String message = "";
+		int idCat = 0;
 		
 		Topic topic = new Topic();
 		topic.setAuteur(req.getParameter("auteur"));
@@ -54,7 +55,7 @@ public class CreationTopic extends HttpServlet {
 		post.setDate(topic.getDate());
 		
 		try {
-			int idCat = Integer.parseInt(req.getParameter("categorie"));
+			idCat = Integer.parseInt(req.getParameter("categorie"));
 			topics.addAll(sql.getTopicsWithCategorie(idCat));
 			
 			List<Categorie> categories = sql.getCategorieBdd(idCat);
@@ -65,9 +66,7 @@ public class CreationTopic extends HttpServlet {
 			post.setTopic(topic);
 			
 			
-			if (sql.insertTopic(topic)) {
-				message = (sql.insertPost(post))? "" : "Erreur lors de la création du topic";
-			}
+			message = (sql.insertTopic(topic))? "" : "Erreur lors de la création du topic";
 		} catch (SQLException ex) {
 		}
 
@@ -75,6 +74,6 @@ public class CreationTopic extends HttpServlet {
 		req.setAttribute("message", message);
 		req.setAttribute("categorie", categorie);
 		req.setAttribute("topics", topics);
-		req.getRequestDispatcher(JSP_PATH).forward(req, resp);
+		req.getRequestDispatcher(JSP_PATH + idCat).forward(req, resp);
 	}
 }

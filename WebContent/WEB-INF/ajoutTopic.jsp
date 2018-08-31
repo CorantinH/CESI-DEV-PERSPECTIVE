@@ -17,9 +17,6 @@
 			<label for="sujet"> Sujet </label>
 			<input type="text" id="sujet" name="sujet" size="10" maxlength="50" required />
 			<br>
-			<label for="contenu"> Message </label>
-			<textarea rows="4" cols="50" id="contenu" name="contenu" placeholder="Entrez votre message" required></textarea>
-			<br>
 			<label for="categorie"> Catégorie </label>
 			<select id="categorie" name="categorie" required>
 				<c:forEach items="${ categories }" var="categorie">
