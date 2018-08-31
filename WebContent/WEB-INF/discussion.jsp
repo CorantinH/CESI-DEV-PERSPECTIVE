@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> <c:out value="${ name }" ></c:out> </title>
-		<link type="text/css" rel="stylesheet" href="<c:url value="/css/topicIn.css"/>" />
+		<link type="text/css" rel="stylesheet" href="<c:url value="/css/discussion.css"/>" />
 	</head>
 	<body>
 	<h2> <c:out value="${ name }"> </c:out> [<c:out value="${ status }"></c:out>] </h2>

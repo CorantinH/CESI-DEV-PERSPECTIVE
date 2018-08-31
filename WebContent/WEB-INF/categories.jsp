@@ -8,12 +8,13 @@
 		<meta charset="UTF-8">
 		<title> Liste des catégories </title>
 		
-		<link rel="stylesheet" href='<c:url value="/css/categorie.css" />' />
+		<link rel="stylesheet" href='<c:url value="/css/categories.css" />' />
 	</head>
 	<body>
 		<section>
-			<c:forEach items="${ categories }" var="cat">
-				<a href="<c:url value="/topics" />"> <c:out value="${ cat.libelle }" /> </a>
+			<c:forEach items="${ categories }" var="categorie">
+				<%-- affichage d'un cadre stylisé pour chaque catégorie --%>
+				<a href="<c:url value="/forum?id=${ categorie.id }" />"> <c:out value="${ categorie.libelle }" /> </a>
 			</c:forEach>
 		</section>
 	</body>

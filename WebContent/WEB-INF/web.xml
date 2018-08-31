@@ -3,53 +3,45 @@
   <display-name>forum_discussion</display-name>
   
    <servlet>
-  	<servlet-name>TestConnection</servlet-name>
-  	<servlet-class>servlets.TestConnection</servlet-class>
+  	<servlet-name>afficherCategories</servlet-name>
+  	<servlet-class>servlets.ControleurIndex</servlet-class>
   </servlet>
   
-  <servlet>
-  	<servlet-name>AffichageCategorie</servlet-name>
-  	<servlet-class>servlets.AfficherCategorie</servlet-class>
+   <servlet>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<servlet-class>servlets.ControleurCategorie</servlet-class>
   </servlet>
   
-  <servlet>
-  	<servlet-name>AffichageTopic</servlet-name>
-  	<servlet-class>servlets.AfficherTopic</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>AffichagePost</servlet-name>
-  	<servlet-class>servlets.AfficherPost</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>afficherTopic</servlet-name>
-  	<servlet-class>servlets.affichageTopic</servlet-class>
+   <servlet>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<servlet-class>servlets.ControleurTopic</servlet-class>
   </servlet>
   
   <servlet>
   	<servlet-name>creationTopic</servlet-name>
-  	<servlet-class>servlets.creationTopic</servlet-class>
+  	<servlet-class>servlets.CreationTopic</servlet-class>
   </servlet>
   
   <!-- URL mapping -->
   <servlet-mapping>
-  	<servlet-name>afficherTopic</servlet-name>
-  	<url-pattern>/post</url-pattern>
+  	<servlet-name>afficherCategories</servlet-name>
+  	<url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<url-pattern>/forum</url-pattern>
+  	<!-- ?id=X -->
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<url-pattern>/topic</url-pattern>
+  	<!-- ?idCat=X&idTopic=X -->
   </servlet-mapping>
   
   <servlet-mapping>
   	<servlet-name>creationTopic</servlet-name>
   	<url-pattern>/createPost</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>AffichageCategorie</servlet-name>
-  	<url-pattern>/cats</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>AffichageTopic</servlet-name>
-  	<url-pattern>/topics</url-pattern>
   </servlet-mapping>
 </web-app>
