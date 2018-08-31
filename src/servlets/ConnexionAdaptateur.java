@@ -33,10 +33,9 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE topic_id = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
 		while (rs.next()) {
 			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
 		}
@@ -51,7 +50,7 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE post_id = " + ID;
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -68,7 +67,7 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE cat_id = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -83,7 +82,13 @@ public class ConnexionAdaptateur {
 		String req = "SELECT * FROM topics WHERE topic_cat = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		pstmt.setInt(0, ID);
+		pstmt.setInt(1, ID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("user_name"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+		}
+		
 		return result;
 	}
 	
@@ -92,9 +97,13 @@ public class ConnexionAdaptateur {
 		String req = "SELECT * FROM posts WHERE post_topic = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		pstmt.setInt(0, ID);
+		pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			result.add(new Post(rs.getInt("post_id"), rs.getString("user_name"), rs.getString("post_content"), rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
+		}
+		
 		return result;
 	}
 	
