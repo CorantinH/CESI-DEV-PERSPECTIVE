@@ -14,8 +14,11 @@ import mysql.ConnexionBDD;
 
 public class ConnexionAdaptateur {
 	
-	private static final String[][] BDDDescription = new String [10][10];
 	private Connection bdd;
+	
+	public ConnexionAdaptateur() {
+		this.getBddConnector();
+	}
 	
 	public void getBddConnector() {
 		try {
@@ -108,26 +111,32 @@ public class ConnexionAdaptateur {
 	}
 	
 	public boolean insertTopic(Topic t) throws SQLException {
+		String req = "INSERT INTO topics () VALUES ()";
 		return true;
 	}
 	
 	public boolean insertPost(Post p) throws SQLException {
+		String req = "INSERT INTO  () VALUES ()";
 		return true;
 	}
 	
 	public boolean insertCategorie(Categorie c) throws SQLException {
+		String req = "INSERT INTO  () VALUES ()";
 		return true;
 	}
 	
 	public boolean editTopic(Topic t) throws SQLException {
+		String req = "UPDATE topics SET blabla = balba WHERE topic_id = ";
 		return true;
 	}
 	
 	public boolean editPost(Post p) throws SQLException {
+		String req = "UPDATE posts SET blabla = balba WHERE topic_id = ";
 		return true;
 	}
 	
 	public boolean editCategorie(Categorie c) throws SQLException {
+		String req = "UPDATE categories SET blabla = balba WHERE topic_id = ;";
 		return true;
 	}
 }
