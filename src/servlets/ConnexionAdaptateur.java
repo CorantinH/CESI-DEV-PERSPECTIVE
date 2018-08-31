@@ -33,7 +33,7 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE topic_id = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
@@ -50,7 +50,7 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE post_id = " + ID;
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -67,7 +67,7 @@ public class ConnexionAdaptateur {
 		if (ID != -1) req += "WHERE cat_id = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		if (ID != -1) pstmt.setInt(0, ID);
+		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -82,7 +82,7 @@ public class ConnexionAdaptateur {
 		String req = "SELECT * FROM topics WHERE topic_cat = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		pstmt.setInt(0, ID);
+		pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
@@ -97,7 +97,7 @@ public class ConnexionAdaptateur {
 		String req = "SELECT * FROM posts WHERE post_topic = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
-		pstmt.setInt(0, ID);
+		pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
