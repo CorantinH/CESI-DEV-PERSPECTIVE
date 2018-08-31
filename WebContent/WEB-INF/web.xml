@@ -42,12 +42,18 @@
   <servlet-mapping>
   	<servlet-name>afficherPosts</servlet-name>
   	<url-pattern>/topic</url-pattern>
-  	<!-- ?idCat=X&idTopic=X -->
+  	<!-- ?idTopic=X -->
   </servlet-mapping>
   
   <servlet-mapping>
   	<servlet-name>creationTopic</servlet-name>
   	<url-pattern>/newTopic</url-pattern>
   	<!-- ?idCat=X -->
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>creationTopic</servlet-name>
+  	<url-pattern>/closeTopic</url-pattern>
+  	<!-- ?idTopic=X -->
   </servlet-mapping>
 </web-app>

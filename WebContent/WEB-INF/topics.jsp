@@ -17,7 +17,7 @@
 	
 		<section>
 			<c:forEach items="${ topics }" var="topic">
-				<a href="<c:url value="/topic?idCat=${ categorie.id }&idTopic=${ topic.id }" />">
+				<a href="<c:url value="/topic?idTopic=${ topic.id }" />">
 					<div class="info">
 						<h2> <c:out value="${ topic.sujet }" /> </h2>
 						<p> par <b><c:out value="${ topic.auteur }" /></b> le <i><c:out value="${ topic.date }" /></i> </p>

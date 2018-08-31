@@ -18,7 +18,7 @@ public class AfficherPosts extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// récupération des catégories
+		// récupération des posts d'un topic
 		ConnexionAdaptateur sql = new ConnexionAdaptateur();
 		List<Post> posts = new ArrayList<>();
 		Topic topic = null;
