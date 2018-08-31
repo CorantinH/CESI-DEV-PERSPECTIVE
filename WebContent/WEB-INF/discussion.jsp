@@ -27,11 +27,11 @@
     <c:when test="${status == 'En cours'}">
         <form method="get" action="<c:url value="/creationReponse"/>">
                     <label for="Login">Pseudo <span class="requis">*</span></label>
-                    <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" />
+                    <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" required/>
                     <br />                 
                      <label for="Message">Message<span class="requis">*</span></label>
                     <br />  
-                    <textarea rows="4" cols="50" name="comment" form="usrform"> Entrez votre réponse</textarea>
+                    <textarea rows="4" cols="50" name="comment" form="usrform" required> Entrez votre réponse</textarea>
                     <br/>
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
@@ -42,7 +42,8 @@
         <h2> Discussion terminée! </h2>
         <br />
     </c:otherwise>
-</c:choose>
+	</c:choose>
+		<a href="bite">Fermer la discussion</a>
 		<a href="javascript:history.back()">Page précédente</a>
 		<a href="index"> Menu </a>
 	</body>
