@@ -7,11 +7,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> <c:out value="${ name }" ></c:out> </title>
-		<link type="text/css" rel="stylesheet" href="<c:url value="css/topicIn.css"/>" />
+		<link type="text/css" rel="stylesheet" href="<c:url value="/css/topicIn.css"/>" />
 	</head>
 	<body>
-	<div class="main"> 
 	<h2> <c:out value="${ name }"> </c:out> [<c:out value="${ status }"></c:out>] </h2>
+	<div class="main"> 
 		<section>
 		Je comprend pas j'ai tout bien fais <br>
 		<p> par <b> Corantin </b>  <i> le 30/01/2015 </i> </p>
@@ -29,7 +29,7 @@
                     <label for="Login">Pseudo <span class="requis">*</span></label>
                     <input type="text" id="Login" name="Login" value="" size="10" maxlength="50" />
                     <br />                 
-                    Message
+                     <label for="Message">Message<span class="requis">*</span></label>
                     <br />  
                     <textarea rows="4" cols="50" name="comment" form="usrform"> Entrez votre réponse</textarea>
                     <br/>
@@ -43,7 +43,7 @@
         <br />
     </c:when>    
     <c:otherwise>
-        Discussion terminée! 
+        <h2> Discussion terminée! </h2>
         <br />
     </c:otherwise>
 </c:choose>
