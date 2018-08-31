@@ -82,7 +82,7 @@ public class ConnexionAdaptateur {
 	
 	public List<Topic> getTopicsWithCategorie(int ID) throws SQLException {
 		List<Topic> result = new ArrayList();
-		String req = "SELECT * FROM topics WHERE topic_cat = ?";
+		String req = "SELECT * FROM topics JOIN users ON user_id = topic_by WHERE topic_cat = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setInt(1, ID);
@@ -97,7 +97,7 @@ public class ConnexionAdaptateur {
 	
 	public List<Post> getPostsWithTopic(int ID) throws SQLException {
 		List<Post> result = new ArrayList();
-		String req = "SELECT * FROM posts WHERE post_topic = ?";
+		String req = "SELECT * FROM posts JOIN users ON user_id = post_by WHERE post_topic = ?";
 		
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setInt(1, ID);
@@ -122,21 +122,6 @@ public class ConnexionAdaptateur {
 	
 	public boolean insertCategorie(Categorie c) throws SQLException {
 		String req = "INSERT INTO  () VALUES ()";
-		return true;
-	}
-	
-	public boolean editTopic(Topic t) throws SQLException {
-		String req = "UPDATE topics SET blabla = balba WHERE topic_id = ";
-		return true;
-	}
-	
-	public boolean editPost(Post p) throws SQLException {
-		String req = "UPDATE posts SET blabla = balba WHERE topic_id = ";
-		return true;
-	}
-	
-	public boolean editCategorie(Categorie c) throws SQLException {
-		String req = "UPDATE categories SET blabla = balba WHERE topic_id = ;";
 		return true;
 	}
 }
