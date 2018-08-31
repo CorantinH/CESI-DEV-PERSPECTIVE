@@ -47,10 +47,10 @@ public class Post {
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
-	public Topic getCategorie() {
+	public Topic getTopic() {
 		return topic;
 	}
-	public void setCategorie(Topic topic) {
+	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
 	@Override

@@ -70,7 +70,8 @@ public class CreationTopic extends HttpServlet {
 				// TODO: supprimer fausse catégorie
 				categorie = fakeCategories().get(idCat);
 			}
-			post.setCategorie(categorie);
+			topic.setCategorie(categorie);
+			post.setTopic(topic);
 			
 			message = (sql.insertTopic(topic) && sql.insertPost(post))? "" : "Erreur lors de la création du topic";
 		} catch (SQLException ex) {
