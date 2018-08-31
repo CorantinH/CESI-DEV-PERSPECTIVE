@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import beans.*;
@@ -39,7 +40,7 @@ public class ConnexionAdaptateur {
 		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
-			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
 		}
 		
 		return result;
@@ -56,7 +57,7 @@ public class ConnexionAdaptateur {
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
-			result.add(new Post(rs.getInt("post_id"), rs.getString("post_by"), rs.getString("post_content"), rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
+			result.add(new Post(rs.getInt("post_id"), rs.getString("post_by"), rs.getString("post_content"), (Date) rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
 		}
 		
 		return result;
@@ -88,7 +89,7 @@ public class ConnexionAdaptateur {
 		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
-			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
 		}
 		
 		return result;
@@ -103,7 +104,7 @@ public class ConnexionAdaptateur {
 		
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
-			result.add(new Post(rs.getInt("post_id"), rs.getString("post_by"), rs.getString("post_content"), rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
+			result.add(new Post(rs.getInt("post_id"), rs.getString("post_by"), rs.getString("post_content"), (Date) rs.getDate("post_date"), new Topic(rs.getInt("post_topic"), "", "")));
 		}
 		
 		return result;
