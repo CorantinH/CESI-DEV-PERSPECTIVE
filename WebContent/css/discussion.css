@@ -32,7 +32,7 @@ form input {
 .main {
 	border: 2px solid black; 
 	margin: 5px 5px 5px 5px;
-	background-color:grey;
+	background-color:#939393;
 	padding:5px;
 	
 }
@@ -40,10 +40,8 @@ form input {
 .info {
 	border: 1px solid black; 
 	padding: 5px;
-	background-color:#A9A9A9;
+	background-color:#B3B3B3;
 	margin: 5px 5px 5px 5px;
-	
-
 }
 
 h2 {
@@ -53,5 +51,28 @@ h2 {
 form {
 	text-align:center;
 	margin-top:20px;
+}
+
+a {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 5px;
+	padding: 5px;
 	
+	text-decoration: none;
+	color:  #565656;
+	background-color: #E8E8E8;
+	box-shadow: 0 3px;
+	cursor: pointer;
+	width: 100%;
+  	bottom: 0;
+  	clear: both;
+}
+
+a:hover {
+	box-shadow: 0 0;
+	background-color: rgba(123,123,123,.1);
 }

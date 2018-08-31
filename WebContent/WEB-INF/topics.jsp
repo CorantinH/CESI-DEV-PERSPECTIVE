@@ -26,5 +26,7 @@
 		</section>
 		
 		<a class="bouton" href="<c:url value="/newTopic?idCat=${ categorie.id }" />"> Créer un nouveau topic </a>
+		<a href="javascript:history.back()">Page précédente</a>
+		<a href="index"> Menu </a>
 	</body>
 </html>

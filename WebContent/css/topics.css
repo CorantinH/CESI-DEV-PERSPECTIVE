@@ -8,6 +8,7 @@ html, body {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	background-color:#E8E8E8;
 }
 
 section {
@@ -22,10 +23,10 @@ a {
 	display: flex;
 	margin: 5px;
 	padding: 5px;
-	
+	justify-content: center;
 	text-decoration: none;
 	color:  #565656;
-	background-color: rgba(236, 236, 236, 1);
+	background-color:#E8E8E8;
 	box-shadow: 0 3px;
 	cursor: pointer;
 }

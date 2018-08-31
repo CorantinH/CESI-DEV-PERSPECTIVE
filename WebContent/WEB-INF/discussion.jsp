@@ -43,6 +43,7 @@
         <br />
     </c:otherwise>
 </c:choose>
-		
+		<a href="javascript:history.back()">Page précédente</a>
+		<a href="index"> Menu </a>
 	</body>
 </html>
