@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `forum`
 --
-DROP DATABASE `forum`
+DROP DATABASE `forum`;
 CREATE DATABASE IF NOT EXISTS `forum` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `forum`;
 
@@ -43,10 +43,10 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Déchargement des données de la table `categories`
 --
 
-INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'XML', 'Waouh le XML c\'est trop bien '),
-(2, 'HTML/CSS', 'Waouh le HTML/CSS c\'est trop bien '),
-(3, 'Javascript', 'Le JavaScript ez!');
+INSERT INTO `categories` (`cat_id`, `cat_name`) VALUES
+(1, 'XML'),
+(2, 'HTML/CSS'),
+(3, 'Javascript');
 
 -- --------------------------------------------------------
 
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_content`, `post_date`, `post_topic`, `post_by`) VALUES
-(3, 'Je n\'arrive po', '2018-08-30 00:00:00', 2, 3),
-(4, 'First', '2018-08-31 00:00:00', 2, 4);
+(3, 'Je n\'arrive po', '2018-08-30 00:00:00', 2, 'Raidez'),
+(4, 'First', '2018-08-31 00:00:00', 2, 'Micheal');
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
 --
 
 INSERT INTO `topics` (`topic_id`, `topic_subject`, `topic_date`, `topic_cat`, `topic_by`, `topic_status`) VALUES
-(2, 'Probléme HTML/CSS', '2018-08-30 00:00:00', 2, 3, 'En cours');
+(2, 'Probléme HTML/CSS', '2018-08-30 00:00:00', 2, 'Raidez', 'En cours');
 
 -- --------------------------------------------------------
 
@@ -106,15 +106,13 @@ INSERT INTO `topics` (`topic_id`, `topic_subject`, `topic_date`, `topic_cat`, `t
 -- Contraintes pour la table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_post_topic_id` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`),
-  ADD CONSTRAINT `FK_post_user_id` FOREIGN KEY (`post_by`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `FK_post_topic_id` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`);
 
 --
 -- Contraintes pour la table `topics`
 --
 ALTER TABLE `topics`
-  ADD CONSTRAINT `FK_topic_categori_id` FOREIGN KEY (`topic_cat`) REFERENCES `categories` (`cat_id`),
-  ADD CONSTRAINT `FK_topic_user_id` FOREIGN KEY (`topic_by`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `FK_topic_categori_id` FOREIGN KEY (`topic_cat`) REFERENCES `categories` (`cat_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

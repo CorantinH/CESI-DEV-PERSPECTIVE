@@ -36,20 +36,12 @@ public class AfficherTopics extends HttpServlet {
 			List<Categorie> categories = sql.getCategorieBdd(idCat);
 			if (!categories.isEmpty()) {
 				categorie = categories.get(0);
-			} else {
-				// TODO: supprimer fausse catégorie
-				categorie = fakeCategories().get(idCat);
 			}
 		} catch (SQLException ex) {
 		}
 		
 		// récupération du nombre de messages d'un topic
 		getNbMessageFromTopic(sql, topics);
-		
-		// TODO: supprimer les faux topics
-		if (topics.isEmpty()) {
-			topics.addAll(fakeTopics());
-		}
 		
 		// injection et redirection
 		req.setAttribute("categorie", categorie);
@@ -67,38 +59,5 @@ public class AfficherTopics extends HttpServlet {
 			
 			topic.setNbMessages(nbMessages);
 		}
-	}
-	
-	/**
-	 * Créer des fausses catégories
-	 * @return liste de catégorie
-	 */
-	private static List<Topic> fakeTopics() {
-		List<Topic> topics = new ArrayList<>();
-		
-		topics.add(new Topic(0, "Raidez", "Besoin d'aide sur MySQL", new Date(), 3));
-		topics.add(new Topic(1, "Mci7", "Pu*** de WEB-INF", new Date(), 8));
-		topics.add(new Topic(2, "Mci7-sister", "compren pa JSTL", new Date(), 2));
-		topics.add(new Topic(3, "Raidez", "adapteur ou controller ?", new Date(), 17));
-		
-		return topics;
-	}
-	
-	/**
-	 * Créer des fausses catégories
-	 * @return liste de catégorie
-	 */
-	private static List<Categorie> fakeCategories() {
-		List<Categorie> categories = new ArrayList<>();
-		
-		categories.add(new Categorie(0, "Java"));
-		categories.add(new Categorie(1, "C"));
-		categories.add(new Categorie(2, "C++"));
-		categories.add(new Categorie(3, "C#"));
-		categories.add(new Categorie(4, "Python3"));
-		categories.add(new Categorie(5, "HTML5/CSS3"));
-		categories.add(new Categorie(6, "Javascript"));
-		
-		return categories;
 	}
 }
