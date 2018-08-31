@@ -114,7 +114,7 @@ public class ConnexionAdaptateur {
 	}
 	
 	public boolean insertTopic(Topic t) throws SQLException, SQLTimeoutException {
-		String req = "INSERT INTO topics (post_subject, post_date, post_cat, post_by, post_status) VALUES (?, ?, ?, ?, ?)";
+		String req = "INSERT INTO topics (topic_subject, topic_date, topic_cat, topic_by, topic_status) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, t.getSujet());
 		pstmt.setDate(2, java.sql.Date.valueOf(LocalDate.now(ZoneId.of("Europe/Paris"))));
