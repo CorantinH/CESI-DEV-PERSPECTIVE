@@ -33,10 +33,6 @@
                     <br />  
                     <textarea rows="4" cols="50" name="comment" form="usrform"> Entrez votre réponse</textarea>
                     <br/>
-					<label for="Date">Date <span class="requis">*</span></label>
-                    <input type="text" id="Date" name="Date" value="" size="10" maxlength="10" />
-                    <br />
-           
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
             </form>

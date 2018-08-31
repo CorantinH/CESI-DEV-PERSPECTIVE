@@ -27,10 +27,20 @@
   	<servlet-class>servlets.affichageTopic</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>creationTopic</servlet-name>
+  	<servlet-class>servlets.creationTopic</servlet-class>
+  </servlet>
+  
   <!-- URL mapping -->
   <servlet-mapping>
   	<servlet-name>afficherTopic</servlet-name>
   	<url-pattern>/post</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>creationTopic</servlet-name>
+  	<url-pattern>/createPost</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
