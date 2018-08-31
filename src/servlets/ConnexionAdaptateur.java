@@ -42,8 +42,11 @@ public class ConnexionAdaptateur {
 		if (ID != -1) pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
+		Topic top;
 		while (rs.next()) {
-			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+			top = new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), ""));
+			top.setStatut(rs.getString("topic_status"));
+			result.add(top);
 		}
 		
 		return result;
@@ -91,8 +94,11 @@ public class ConnexionAdaptateur {
 		pstmt.setInt(1, ID);
 		
 		ResultSet rs = pstmt.executeQuery();
+		Topic top;
 		while (rs.next()) {
-			result.add(new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), "")));
+			top = new Topic(rs.getInt("topic_id"), rs.getString("topic_by"), rs.getString("topic_subject"), (Date) rs.getDate("topic_date"), new Categorie(rs.getInt("topic_cat"), ""));
+			top.setStatut(rs.getString("topic_status"));
+			result.add(top);
 		}
 		
 		return result;
