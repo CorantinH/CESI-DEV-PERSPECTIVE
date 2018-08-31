@@ -24,7 +24,7 @@
   
   <servlet>
   	<servlet-name>ajoutPost</servlet-name>
-  	<servlet-class>servlets.CreationPost</servlet-class>
+  	<servlet-class>servlets.AjoutPost</servlet-class>
   </servlet>
   
   <!-- URL mapping -->
@@ -54,6 +54,12 @@
   <servlet-mapping>
   	<servlet-name>creationTopic</servlet-name>
   	<url-pattern>/closeTopic</url-pattern>
+  	<!-- ?idTopic=X -->
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>ajoutPost</servlet-name>
+  	<url-pattern>/ajoutPost</url-pattern>
   	<!-- ?idTopic=X -->
   </servlet-mapping>
 </web-app>
