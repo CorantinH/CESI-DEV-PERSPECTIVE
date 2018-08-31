@@ -7,11 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class creationTopic extends HttpServlet {
+public class CreationTopic extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.getRequestDispatcher("WEB-INF/creationPost.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/ajoutPost.jsp").forward(req, resp);
 	}
 }

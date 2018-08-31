@@ -20,7 +20,7 @@ import beans.Topic;
  *
  */
 public class ControleurCategorie extends HttpServlet {
-	private static String JSP_PATH = "/WEB-INF/topic.jsp";
+	private static String JSP_PATH = "/WEB-INF/topics.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
