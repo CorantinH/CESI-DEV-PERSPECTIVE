@@ -3,38 +3,51 @@
   <display-name>forum_discussion</display-name>
   
    <servlet>
-  	<servlet-name>TestConnection</servlet-name>
-  	<servlet-class>servlets.TestConnection</servlet-class>
+  	<servlet-name>afficherCategories</servlet-name>
+  	<servlet-class>servlets.AfficherCategories</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<servlet-class>servlets.AfficherTopics</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<servlet-class>servlets.AfficherPosts</servlet-class>
   </servlet>
   
   <servlet>
-  	<servlet-name>AffichageCategorie</servlet-name>
-  	<servlet-class>servlets.AfficherCategorie</servlet-class>
+  	<servlet-name>creationTopic</servlet-name>
+  	<servlet-class>servlets.CreationTopic</servlet-class>
   </servlet>
   
   <servlet>
-  	<servlet-name>AffichageTopic</servlet-name>
-  	<servlet-class>servlets.AfficherTopic</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>AffichagePost</servlet-name>
-  	<servlet-class>servlets.AfficherPost</servlet-class>
+  	<servlet-name>ajoutPost</servlet-name>
+  	<servlet-class>servlets.CreationPost</servlet-class>
   </servlet>
   
   <!-- URL mapping -->
   <servlet-mapping>
-  	<servlet-name>TestConnection</servlet-name>
-  	<url-pattern>/</url-pattern>
+  	<servlet-name>afficherCategories</servlet-name>
+  	<url-pattern>/index</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
-  	<servlet-name>AffichageCategorie</servlet-name>
-  	<url-pattern>/cats</url-pattern>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<url-pattern>/forum</url-pattern>
+  	<!-- ?idCat=X -->
   </servlet-mapping>
   
   <servlet-mapping>
-  	<servlet-name>AffichageTopic</servlet-name>
-  	<url-pattern>/topics</url-pattern>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<url-pattern>/topic</url-pattern>
+  	<!-- ?idCat=X&idTopic=X -->
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>creationTopic</servlet-name>
+  	<url-pattern>/newTopic</url-pattern>
+  	<!-- ?idCat=X -->
   </servlet-mapping>
 </web-app>
