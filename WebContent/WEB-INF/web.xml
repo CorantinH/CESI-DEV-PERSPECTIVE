@@ -3,13 +3,25 @@
   <display-name>forum_discussion</display-name>
   
    <servlet>
-  	<servlet-name>afficherTopic</servlet-name>
+  	<servlet-name>afficherCategories</servlet-name>
   	<servlet-class>servlets.ControllerCategorie</servlet-class>
   </servlet>
   
   <!-- URL mapping -->
   <servlet-mapping>
-  	<servlet-name>afficherTopic</servlet-name>
-  	<url-pattern>/</url-pattern>
+  	<servlet-name>afficherCategories</servlet-name>
+  	<url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>afficherTopics</servlet-name>
+  	<url-pattern>/forum</url-pattern>
+  	<!-- ?id=X -->
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>afficherPosts</servlet-name>
+  	<url-pattern>/topic</url-pattern>
+  	<!-- ?idCat=X&idTopic=X -->
   </servlet-mapping>
 </web-app>
