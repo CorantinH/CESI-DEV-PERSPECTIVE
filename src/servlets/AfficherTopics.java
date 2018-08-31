@@ -53,7 +53,7 @@ public class AfficherTopics extends HttpServlet {
 		for (Topic topic : topics) {
 			int nbMessages = 0;
 			try {
-				nbMessages = sql.getPostBdd(topic.getId()).size();
+				nbMessages = sql.getPostsWithTopic(topic.getId()).size();
 			} catch (SQLException ex) {
 			}
 			
