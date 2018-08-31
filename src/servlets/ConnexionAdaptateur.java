@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -114,7 +116,7 @@ public class ConnexionAdaptateur {
 		String req = "INSERT INTO topics (post_subject, post_date, post_cat, post_by, post_status) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, t.getSujet());
-		pstmt.setDate(2, (java.sql.Date) t.getDate());
+		pstmt.setDate(2, java.sql.Date.valueOf(LocalDate.now(ZoneId.of("Europe/Paris"))));
 		pstmt.setInt(3, t.getCategorie().getId());
 		pstmt.setString(4, t.getAuteur());
 		pstmt.setString(5, "En cours");
@@ -128,7 +130,7 @@ public class ConnexionAdaptateur {
 		String req = "INSERT INTO posts (post_content, post_date, post_topic, post_by) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt = this.bdd.prepareStatement(req);
 		pstmt.setString(1, p.getContenu());
-		pstmt.setDate(2, (java.sql.Date) p.getDate());
+		pstmt.setDate(2, java.sql.Date.valueOf(LocalDate.now(ZoneId.of("Europe/Paris"))));
 		pstmt.setInt(3, p.getTopic().getId());
 		pstmt.setString(4, p.getAuteur());
 		
