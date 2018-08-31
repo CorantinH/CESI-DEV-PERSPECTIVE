@@ -24,5 +24,7 @@
 				</a>
 			</c:forEach>
 		</section>
+		
+		<a class="bouton" href="<c:url value="/newTopic?idCat=${ categorie.id }" />"> Créer un nouveau topic </a>
 	</body>
 </html>

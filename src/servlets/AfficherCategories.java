@@ -16,7 +16,7 @@ import beans.Categorie;
  * Affiche la page des catégories
  * @author alexis
  */
-public class ControleurIndex extends HttpServlet {
+public class AfficherCategories extends HttpServlet {
 	private static String JSP_PATH = "/WEB-INF/categories.jsp";
 	
 	@Override

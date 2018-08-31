@@ -19,7 +19,7 @@ import beans.Topic;
  * @author alexis
  *
  */
-public class ControleurCategorie extends HttpServlet {
+public class AfficherTopics extends HttpServlet {
 	private static String JSP_PATH = "/WEB-INF/topics.jsp";
 	
 	@Override

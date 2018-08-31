@@ -4,22 +4,27 @@
   
    <servlet>
   	<servlet-name>afficherCategories</servlet-name>
-  	<servlet-class>servlets.ControleurIndex</servlet-class>
+  	<servlet-class>servlets.AfficherCategories</servlet-class>
   </servlet>
   
    <servlet>
   	<servlet-name>afficherTopics</servlet-name>
-  	<servlet-class>servlets.ControleurCategorie</servlet-class>
+  	<servlet-class>servlets.AfficherTopics</servlet-class>
   </servlet>
   
    <servlet>
   	<servlet-name>afficherPosts</servlet-name>
-  	<servlet-class>servlets.ControleurTopic</servlet-class>
+  	<servlet-class>servlets.AfficherPosts</servlet-class>
   </servlet>
   
   <servlet>
   	<servlet-name>creationTopic</servlet-name>
   	<servlet-class>servlets.CreationTopic</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>ajoutPost</servlet-name>
+  	<servlet-class>servlets.CreationPost</servlet-class>
   </servlet>
   
   <!-- URL mapping -->
@@ -31,7 +36,7 @@
   <servlet-mapping>
   	<servlet-name>afficherTopics</servlet-name>
   	<url-pattern>/forum</url-pattern>
-  	<!-- ?id=X -->
+  	<!-- ?idCat=X -->
   </servlet-mapping>
   
   <servlet-mapping>
@@ -42,6 +47,7 @@
   
   <servlet-mapping>
   	<servlet-name>creationTopic</servlet-name>
-  	<url-pattern>/createPost</url-pattern>
+  	<url-pattern>/newTopic</url-pattern>
+  	<!-- ?idCat=X -->
   </servlet-mapping>
 </web-app>
