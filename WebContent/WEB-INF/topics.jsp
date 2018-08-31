@@ -11,6 +11,10 @@
 		<link rel="stylesheet" href='<c:url value="/css/topics.css" />' />
 	</head>
 	<body>
+		<div class="error">
+			<c:out value="${ message }" />
+		</div>
+	
 		<section>
 			<c:forEach items="${ topics }" var="topic">
 				<a href="<c:url value="/topic?idCat=${ categorie.id }&idTopic=${ topic.id }" />">
