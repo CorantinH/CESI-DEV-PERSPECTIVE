@@ -123,7 +123,6 @@ public class ConnexionAdaptateur {
 		pstmt.setString(5, "En cours");
 		
 		pstmt.executeUpdate();
-		this.bdd.commit();
 		
 		return true;
 	}
@@ -137,7 +136,6 @@ public class ConnexionAdaptateur {
 		pstmt.setString(4, p.getAuteur());
 		
 		pstmt.executeUpdate();
-		this.bdd.commit();
 		
 		return true;
 	}
@@ -148,7 +146,6 @@ public class ConnexionAdaptateur {
 		pstmt.setString(1, c.getLibelle());
 		
 		pstmt.executeUpdate();
-		this.bdd.commit();
 		
 		return true;
 	}
@@ -160,7 +157,6 @@ public class ConnexionAdaptateur {
 		pstmt.setInt(2, t.getId());
 		
 		pstmt.executeUpdate();
-		this.bdd.commit();
 		
 		return true;
 	}
